@@ -10,7 +10,7 @@ class ListTileThemePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('listtile theme'),
+        title: const Text('ListTile主题'),
       actions: [
           Switch(
                   value: context.read<ThemeModel>().themeType == ThemeMode.dark ? true : false,
@@ -27,8 +27,20 @@ class ListTileThemePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:const [
-             ListTile(
+            ListTile(
               leading: Icon(Icons.radio_button_checked),
+              title: Text('文本主题'),
+              subtitle: Text('文本主题详情'),
+              // tileColor: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.help_outline),
+              title: Text('文本主题'),
+              subtitle: Text('文本主题详情'),
+              // tileColor: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.mail),
               title: Text('文本主题'),
               subtitle: Text('文本主题详情'),
               // tileColor: Colors.white,

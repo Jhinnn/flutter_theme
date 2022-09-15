@@ -32,9 +32,16 @@ class MyApp extends StatelessWidget {
             : ThemeMode.light,
         theme: ThemeData(
             appBarTheme: const AppBarTheme(
-              // color: Colors.orange,
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.white,
+              systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarBrightness:
+                      Brightness.light, //状态栏颜色  light黑色  dark白色
+                  statusBarIconBrightness: Brightness.dark,
+                  statusBarColor: Colors.red, //未知
+                  systemNavigationBarIconBrightness: Brightness.light //未知
+                  ),
+
+              backgroundColor: Colors.white, //导航栏颜色 ，包括状态栏
+              foregroundColor: Colors.red, //
               iconTheme: IconThemeData(color: Colors.black),
               titleSpacing: 10,
               // centerTitle: false,
@@ -42,8 +49,8 @@ class MyApp extends StatelessWidget {
               // shadowColor: Colors.amberAccent,
               // elevation: 10,
               // shape: RoundedRectangleBorder(side: BorderSide(width: 10,color: Colors.red)),
-              surfaceTintColor: Colors.black,
-              systemOverlayStyle: SystemUiOverlayStyle.dark,
+              surfaceTintColor: Colors.red, //未知
+
               toolbarTextStyle: TextStyle(fontSize: 30, color: Colors.white),
               titleTextStyle: TextStyle(
                   fontSize: 24,
@@ -94,7 +101,14 @@ class MyApp extends StatelessWidget {
             //listTileTheme
             listTileTheme: const ListTileThemeData(
               // dense: true,
-              style: ListTileStyle.list,
+              iconColor: Colors.red,
+              textColor: Colors.yellow,
+              horizontalTitleGap: 30,
+              minLeadingWidth: 30,
+              minVerticalPadding: 10,
+              selectedTileColor: Colors.black12,
+              tileColor: Colors.grey,
+              style: ListTileStyle.drawer,
             ),
 
             ///非Cupertino dialog 主题
@@ -112,15 +126,17 @@ class MyApp extends StatelessWidget {
               size: 32,
             ),
             cardTheme: const CardTheme(color: Colors.white),
+            //floatingActionButtonTheme
             floatingActionButtonTheme: const FloatingActionButtonThemeData(
                 backgroundColor: AppColors.goodColor,
-                foregroundColor: Colors.white),
+                foregroundColor: Colors.white,
+                iconSize: 160),
             //elevatedButtonTheme
             elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
               side: MaterialStateProperty.all(
-                  const BorderSide(color: Colors.yellow, width: 3)),
-              fixedSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
+                  const BorderSide(color: Colors.black, width: 1)),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(200, 48)),
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(fontSize: 18, color: Colors.white)), //color无效
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -129,7 +145,7 @@ class MyApp extends StatelessWidget {
               overlayColor: MaterialStateProperty.all<Color>(
                   Colors.transparent), //点击时背景颜色
 
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
             )),
 
             //outlinedButtonTheme
@@ -137,7 +153,7 @@ class MyApp extends StatelessWidget {
                 style: ButtonStyle(
               side: MaterialStateProperty.all(
                   const BorderSide(color: AppColors.goodColor, width: 1)),
-              fixedSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
+              fixedSize: MaterialStateProperty.all<Size>(const Size(200, 48)),
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(fontSize: 20, color: Colors.white)),
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -153,13 +169,14 @@ class MyApp extends StatelessWidget {
             textButtonTheme: TextButtonThemeData(
                 style: ButtonStyle(
               fixedSize:
-                  MaterialStateProperty.all<Size>(const Size(180, 40)), //按钮大小
+                  MaterialStateProperty.all<Size>(const Size(180, 48)), //按钮大小
+              maximumSize: MaterialStateProperty.all<Size>(const Size(300, 48)),
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(fontSize: 18, color: Colors.red)), //按钮字体大小
               foregroundColor:
                   MaterialStateProperty.all<Color>(Colors.white), //按钮文本颜色
               backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.black), //按钮背景
+                  MaterialStateProperty.all<Color>(Colors.grey), //按钮背景
             )),
             focusColor: Colors.black,
             textTheme: const TextTheme(
@@ -257,11 +274,39 @@ class MyApp extends StatelessWidget {
             // elevation: 10,
             // shape: RoundedRectangleBorder(side: BorderSide(width: 10,color: Colors.red)),
             surfaceTintColor: Colors.black,
-            systemOverlayStyle: SystemUiOverlayStyle.light,
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarBrightness: Brightness.dark, //状态栏颜色  light黑色  dark白色
+                statusBarIconBrightness: Brightness.dark,
+                statusBarColor: Colors.red, //未知
+                systemNavigationBarIconBrightness: Brightness.light //未知
+                ),
             toolbarTextStyle: TextStyle(fontSize: 30, color: Colors.black26),
             titleTextStyle: TextStyle(
                 fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
             actionsIconTheme: IconThemeData(color: Colors.red, size: 30),
+          ),
+          cupertinoOverrideTheme: const CupertinoThemeData(
+            brightness: Brightness.dark,
+            primaryColor: Colors.red,
+            scaffoldBackgroundColor: Colors.red,
+
+            ///CupertinoButton 文字颜色
+            primaryContrastingColor: Colors.pink,
+            textTheme: CupertinoTextThemeData(
+                primaryColor: CupertinoColors.systemGreen,
+                textStyle: TextStyle(
+                    color: Colors.red,
+                    fontSize: 20), //color：无效果 fontSize： CupertinoButton 文字大小
+                actionTextStyle: TextStyle(color: Colors.red, fontSize: 20),
+                tabLabelTextStyle: TextStyle(color: Colors.red, fontSize: 20),
+                navActionTextStyle: TextStyle(color: Colors.red, fontSize: 20),
+                navLargeTitleTextStyle:
+                    TextStyle(color: Colors.red, fontSize: 20),
+                navTitleTextStyle: TextStyle(color: Colors.red, fontSize: 20),
+                pickerTextStyle: TextStyle(color: Colors.red, fontSize: 20),
+                dateTimePickerTextStyle:
+                    TextStyle(color: Colors.red, fontSize: 20)),
+            barBackgroundColor: Colors.red,
           ),
           splashColor: Colors.red,
           primaryColor: Colors.green,
@@ -282,7 +327,14 @@ class MyApp extends StatelessWidget {
           //listTileTheme
           listTileTheme: const ListTileThemeData(
             // dense: true,
-            style: ListTileStyle.list,
+            iconColor: Colors.blue,
+            textColor: Colors.pink,
+            horizontalTitleGap: 30,
+            minLeadingWidth: 30,
+            minVerticalPadding: 10,
+            selectedTileColor: Colors.indigo,
+            tileColor: Colors.purpleAccent,
+            style: ListTileStyle.drawer,
           ),
 //switchTheme
           switchTheme: SwitchThemeData(
@@ -298,7 +350,7 @@ class MyApp extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
             side: MaterialStateProperty.all(
-                const BorderSide(color: Colors.red, width: 3)),
+                const BorderSide(color: Colors.red, width: 1)),
             fixedSize: MaterialStateProperty.all<Size>(const Size(200, 40)),
             textStyle: MaterialStateProperty.all<TextStyle>(
                 const TextStyle(fontSize: 18, color: Colors.white)), //color无效
@@ -308,7 +360,7 @@ class MyApp extends StatelessWidget {
             overlayColor:
                 MaterialStateProperty.all<Color>(Colors.transparent), //点击时背景颜色
 
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
           )),
 
           //outlinedButtonTheme
@@ -325,7 +377,7 @@ class MyApp extends StatelessWidget {
             overlayColor:
                 MaterialStateProperty.all<Color>(Colors.transparent), //点击时背景颜色
 
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.pink),
           )),
 
           // textButtonTheme
@@ -333,6 +385,8 @@ class MyApp extends StatelessWidget {
               style: ButtonStyle(
             fixedSize:
                 MaterialStateProperty.all<Size>(const Size(180, 40)), //按钮大小
+            minimumSize: MaterialStateProperty.all<Size>(const Size(140, 48)),
+            maximumSize: MaterialStateProperty.all<Size>(const Size(300, 48)),
             textStyle: MaterialStateProperty.all<TextStyle>(
                 const TextStyle(fontSize: 18, color: Colors.red)), //按钮字体大小
             foregroundColor:

@@ -10,7 +10,7 @@ class DialogThemePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('dialog theme'),
+        title: const Text('弹框主题'),
         actions: [
           Switch(
               value: context.read<ThemeModel>().themeType == ThemeMode.dark
@@ -21,11 +21,11 @@ class DialogThemePage extends StatelessWidget {
               }),
         ],
       ),
-      body: SingleChildScrollView(
-          child: Center(
+      
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextButton(
               onPressed: () {
@@ -117,7 +117,7 @@ class DialogThemePage extends StatelessWidget {
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }
